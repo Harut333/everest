@@ -1,6 +1,6 @@
 import {useEffect, useRef, useState} from "react";
 import Image from "next/image";
-import logo from "./images/logoFull.png"
+import logo from "./images/logo.png"
 import Link from "next/link";
 import learningIcon from "./images/learning-icon.webp"
 import dirIcon from "./images/dir-icon.png"
@@ -24,7 +24,7 @@ export default function Homepage() {
 
     return (
         <>
-            <div className="banner">
+        <div className="banner" style={{backgroundImage:`url${logo}`}}>
                 <div className={"logo-side"}>
                     <Image src={logo} alt="logo-everest"/>
                 </div>

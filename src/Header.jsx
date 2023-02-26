@@ -1,5 +1,7 @@
 import Link from "next/link";
 import Head from "next/head";
+import Image from "next/image";
+import logo from "./images/logo_transp.png"
 
 export default function Header() {
 
@@ -31,7 +33,10 @@ export default function Header() {
             <div className="header">
                 <header>
                     <div className="logo">
-                        Everest IT
+                        <Image
+                            src={logo}
+                            alt={"everest logo"}
+                        />
                     </div>
                     <nav>
                         <ul>
