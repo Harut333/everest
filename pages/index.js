@@ -4,7 +4,6 @@ import Link from "next/link";
 import Header from "../src/Header";
 import Homepage from "../src/Homepage";
 
-
 export default function Home() {
     return (
         <>
