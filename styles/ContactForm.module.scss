@@ -1,5 +1,11 @@
 // ContactForm.module.scss
-
+.container  {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+    align-items: center;
+}
 .form {
   display: flex;
   flex-direction: column;

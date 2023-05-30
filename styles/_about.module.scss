@@ -1,15 +1,21 @@
 // _about.module.scss
 
-.about-section {
-  padding: 20px;
+.aboutSection {
+  padding: 4rem;
+  background-color: #f9f9f9;
+  text-align: center;
 }
 
-.about-title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 10px;
+.aboutTitle {
+  margin: 0;
+  line-height: 1.15;
+  font-size: 3rem;
+  color: #333;
 }
 
-.about-description {
-  font-size: 16px;
+.aboutDescription {
+  margin: 2rem 0;
+  line-height: 1.5;
+  font-size: 1.5rem;
+  color: #777;
 }

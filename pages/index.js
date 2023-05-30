@@ -1,15 +1,15 @@
 import React from 'react';
-import ContactForm from './contact/ContactForm';
-import Pricing from './Pricing';
+import Header from '../src/Header';
+import Home from "./Home";
 
-const HomePage = () => {
-  return (
-      <div>
-        <h1>Welcome to Everest Academy</h1>
-        <ContactForm />
-        <Pricing />
-      </div>
-  );
+const Layout = ({ children }) => {
+    return (
+        <div>
+            <Home />
+            {/*<Header />*/}
+            <main>{children}</main>
+        </div>
+    );
 };
 
-export default HomePage;
+export default Layout;

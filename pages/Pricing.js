@@ -1,43 +1,71 @@
 import React from 'react';
 import styles from '../styles/Pricing.module.scss';
+import Header from "../src/Header";
 
 const Pricing = () => {
     return (
-        <div className={styles.pricing}>
-            <div className={styles.plan}>
-                <h2 className={styles['plan-title']}>HTML and CSS</h2>
-                <p className={styles['plan-price']}>26000AMD/month</p>
-                <div className={styles['plan-features']}>
-                    <ul>
-                        <li>Duration: 2 months</li>
-                        <li>Group lessons</li>
-                    </ul>
+        <>
+            <Header />
+            <div className={styles.pricing}>
+                <div className={styles.planWrapper}>
+                    <div className={styles.planCard}>
+                        <div className={styles.planFront}>
+                            <h2 className={styles.planTitle}>HTML and CSS</h2>
+                            <p className={styles.planPrice}>26000AMD/month</p>
+                            <div className={styles.planFeatures}>
+                                <ul>
+                                    <li>Duration: 2 months</li>
+                                    <li>Group lessons</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div className={styles.planBack}>
+                            <div className={styles.planDescription}>
+                                <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <button className={styles.button}>Enroll Now</button>
-            </div>
-            <div className={styles.plan}>
-                <h2 className={styles['plan-title']}>JavaScript</h2>
-                <p className={styles['plan-price']}>35000AMD/month</p>
-                <div className={styles['plan-features']}>
-                    <ul>
-                        <li>Duration: 3 months</li>
-                        <li>Group lessons</li>
-                    </ul>
+                <div className={styles.planWrapper}>
+                    <div className={styles.planCard}>
+                        <div className={styles.planFront}>
+                            <h2 className={styles.planTitle}>JavaScript</h2>
+                            <p className={styles.planPrice}>35000AMD/month</p>
+                            <div className={styles.planFeatures}>
+                                <ul>
+                                    <li>Duration: 3 months</li>
+                                    <li>Group lessons</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div className={styles.planBack}>
+                            <div className={styles.planDescription}>
+                                <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <button className={styles.button}>Enroll Now</button>
-            </div>
-            <div className={styles.plan}>
-                <h2 className={styles['plan-title']}>React.JS</h2>
-                <p className={styles['plan-price']}>44000AMD/month</p>
-                <div className={styles['plan-features']}>
-                    <ul>
-                        <li>Duration: 2 months</li>
-                        <li>Group lessons</li>
-                    </ul>
+                <div className={styles.planWrapper}>
+                    <div className={styles.planCard}>
+                        <div className={styles.planFront}>
+                            <h2 className={styles.planTitle}>React.JS</h2>
+                            <p className={styles.planPrice}>44000AMD/month</p>
+                            <div className={styles.planFeatures}>
+                                <ul>
+                                    <li>Duration: 2 months</li>
+                                    <li>Group lessons</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div className={styles.planBack}>
+                            <div className={styles.planDescription}>
+                                <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <button className={styles.button}>Enroll Now</button>
             </div>
-        </div>
+        </>
     );
 };
 
