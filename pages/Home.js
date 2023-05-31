@@ -2,6 +2,7 @@ import React from 'react';
 import ContactForm from './contact/ContactForm';
 import styles from '../styles/_home.module.scss';
 import Header from "../src/Header";
+
 import Link from "next/link";
 
 const Home = () => {

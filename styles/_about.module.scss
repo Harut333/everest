@@ -1,5 +1,3 @@
-// _about.module.scss
-
 .aboutSection {
   padding: 4rem;
   background-color: #f9f9f9;
@@ -18,4 +16,15 @@
   line-height: 1.5;
   font-size: 1.5rem;
   color: #777;
+}
+
+// Responsive Styles
+@media (max-width: 768px) {
+  .aboutTitle {
+    font-size: 2rem;
+  }
+
+  .aboutDescription {
+    font-size: 1.2rem;
+  }
 }

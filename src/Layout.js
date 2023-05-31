@@ -1,10 +1,11 @@
 import React from 'react';
 import Header from './Header';
+import Home from "../pages/Home";
 
 const Layout = ({children}) => {
     return (
         <div>
-            <Header/>
+            <Home />
             <main>{children}</main>
         </div>
     );

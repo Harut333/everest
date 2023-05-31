@@ -1,7 +1,15 @@
-.header{
+.header {
   width: 100%;
   background-color: #0070f3;
   display: flex;
   justify-content: center;
   position: fixed;
+}
+
+// Responsive Styles
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+  }
 }

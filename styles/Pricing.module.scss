@@ -74,3 +74,38 @@
 .planDescription {
   padding: 20px;
 }
+
+// Responsive Styles
+@media (max-width: 768px) {
+  .planWrapper {
+    margin-top: 50px;
+  }
+
+  .planCard {
+    width: 100%;
+    height: auto;
+  }
+
+  .planFront,
+  .planBack {
+    padding: 10px;
+  }
+
+  .planTitle {
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+
+  .planPrice {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+
+  .planFeatures {
+    margin-bottom: 5px;
+  }
+
+  .planDescription {
+    padding: 10px;
+  }
+}
