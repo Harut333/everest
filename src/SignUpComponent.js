@@ -1,20 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
-import { firebaseConfig } from './firebase';
+import React, {useState, useEffect} from 'react';
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    sendEmailVerification,
+    signInWithEmailAndPassword,
+    onAuthStateChanged
+} from 'firebase/auth';
+import {firebaseConfig} from './firebase';
+import {getFirestore, doc, setDoc} from 'firebase/firestore';
 import styles from '../styles/AuthForm.module.scss';
 
 const auth = getAuth(firebaseConfig);
+const db = getFirestore();
 
 const SignUpComponent = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [username, setUsername] = useState(''); // New state for the username
     const [successMessage, setSuccessMessage] = useState(false);
     const [verificationSent, setVerificationSent] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
 
     const handleSignUp = async () => {
         try {
-            const { user } = await createUserWithEmailAndPassword(auth, email, password);
+            const {user} = await createUserWithEmailAndPassword(auth, email, password);
             sendEmailVerification(auth.currentUser)
                 .then(() => {
                     setVerificationSent(true);
@@ -22,6 +31,15 @@ const SignUpComponent = () => {
                 .catch((error) => {
                     console.log(error);
                 });
+
+            const userId = user.uid; // Get the user's ID after creating the user
+
+            // Create a new document in the "users" collection with the user's profile details
+            await setDoc(doc(db, 'users', userId), {
+                username: username,
+                email: email,
+            });
+
         } catch (error) {
             // Handle error
             if (error.code === 'auth/email-already-in-use') {
@@ -44,7 +62,7 @@ const SignUpComponent = () => {
 
     const handleSignIn = async () => {
         try {
-            const { user } = await signInWithEmailAndPassword(auth, email, password);
+            const {user} = await signInWithEmailAndPassword(auth, email, password);
             if (user) {
                 if (user.emailVerified) {
                     // Redirect to desired page after successful sign-in
@@ -73,6 +91,15 @@ const SignUpComponent = () => {
                                     className={styles.authFormFieldInput}
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
+                                />
+                            </div>
+                            <div className={styles.authFormField}>
+                                <label className={styles.authFormFieldLabel}>Username</label>
+                                <input
+                                    type="text"
+                                    className={styles.authFormFieldInput}
+                                    value={username}
+                                    onChange={(e) => setUsername(e.target.value)}
                                 />
                             </div>
                             <div className={styles.authFormField}>

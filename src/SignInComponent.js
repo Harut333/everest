@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { firebaseConfig } from './firebase';
+import { firebaseConfig } from '../src/firebase';
 import styles from '../styles/AuthForm.module.scss';
 
 const auth = getAuth(firebaseConfig);
@@ -15,8 +15,8 @@ const SignInComponent = () => {
             const { user } = await signInWithEmailAndPassword(auth, email, password);
             if (user) {
                 if (user.emailVerified) {
-                    // Redirect to the pricing link after successful sign-in
-                    window.location.href = '/';
+                    // Redirect to the profile page after successful sign-in
+                    window.location.href = '../ProfilePage';
                 } else {
                     setErrorMessage('You need to verify your email to log in.');
                 }
