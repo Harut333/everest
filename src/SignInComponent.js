@@ -8,6 +8,7 @@ const auth = getAuth(firebaseConfig);
 const SignInComponent = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleSignIn = async () => {
         try {
@@ -17,8 +18,7 @@ const SignInComponent = () => {
                     // Redirect to the pricing link after successful sign-in
                     window.location.href = '/';
                 } else {
-                    // Display an error message or prevent login
-                    console.log('Email not verified. Unable to login.');
+                    setErrorMessage('You need to verify your email to log in.');
                 }
             }
         } catch (error) {
@@ -30,6 +30,7 @@ const SignInComponent = () => {
         <div>
             <div className={styles.authForm}>
                 <h2 className={styles.authFormTitle}>Sign In</h2>
+                {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
                 <div className={styles.authFormField}>
                     <label className={styles.authFormFieldLabel}>Email</label>
                     <input

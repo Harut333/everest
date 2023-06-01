@@ -10,6 +10,7 @@ const SignUpComponent = () => {
     const [password, setPassword] = useState('');
     const [successMessage, setSuccessMessage] = useState(false);
     const [verificationSent, setVerificationSent] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleSignUp = async () => {
         try {
@@ -23,6 +24,11 @@ const SignUpComponent = () => {
                 });
         } catch (error) {
             // Handle error
+            if (error.code === 'auth/email-already-in-use') {
+                setErrorMessage('User already exists. Please sign in instead.');
+            } else {
+                setErrorMessage('An error occurred. Please try again later.');
+            }
         }
     };
 
@@ -59,6 +65,7 @@ const SignUpComponent = () => {
                     {!verificationSent ? (
                         <>
                             <h2 className={styles.authFormTitle}>Sign Up</h2>
+                            {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
                             <div className={styles.authFormField}>
                                 <label className={styles.authFormFieldLabel}>Email</label>
                                 <input

@@ -18,15 +18,15 @@ const Home = () => {
                     Get Started
                 </Link>
             </div>
-            <footer className={styles.footer}>
-                <a
-                    href="https://example.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Footer Link
-                </a>
-            </footer>
+            {/*<footer className={styles.footer}>*/}
+            {/*    <a*/}
+            {/*        href="https://example.com"*/}
+            {/*        target="_blank"*/}
+            {/*        rel="noopener noreferrer"*/}
+            {/*    >*/}
+            {/*        Footer Link*/}
+            {/*    </a>*/}
+            {/*</footer>*/}
         </section>
     );
 };
