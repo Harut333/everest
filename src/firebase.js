@@ -23,4 +23,6 @@ export const auth = getAuth(app);
 export const db = getFirestore(app);
 
 // Export the Firebase app instance
+export { firebaseConfig };
+
 export default app;
