@@ -19,12 +19,11 @@ const AdminPanel = ({ users, setUsers }) => {
             console.error('Error toggling admin status:', error);
         }
     };
-
     return (
         <div>
             <h1>Admin Panel</h1>
             <ul>
-                {users.map((user) => (
+                {users && users.map((user) => (
                     <li key={user.uid}>
                         {user.username} &nbsp;
                         <label>
