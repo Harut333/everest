@@ -1,28 +1,24 @@
+import { doc, collection, getDocs } from 'firebase/firestore';
+import { useState, useEffect } from 'react';
 import { db } from './firebase';
-import { useEffect, useState } from 'react';
-import { firestore } from './firebase';
-import { collection, getDocs } from 'firebase/firestore';
 
-const AdminPanel = () => {
-    const [users, setUsers] = useState([]);
-
-    useEffect(() => {
-        const fetchUsers = async () => {
-            try {
-                const usersCollection = collection(db, 'users'); // Make sure 'users' is the correct collection name in your Firestore
-                const usersSnapshot = await getDocs(usersCollection);
-                const users = [];
-                usersSnapshot.forEach((doc) => {
-                    users.push({ id: doc.id, ...doc.data() });
-                });
-                setUsers(users);
-            } catch (error) {
-                console.error('Error fetching users:', error);
-            }
-        };
-
-        fetchUsers();
-    }, []);
+const AdminPanel = ({ users, setUsers }) => {
+    const handleToggleAdmin = async (userId, isAdmin) => {
+        try {
+            const userRef = doc(db, 'users', userId);
+            await updateDoc(userRef, {
+                isAdmin: !isAdmin,
+            });
+            // Update the local state to reflect the changes
+            setUsers((prevUsers) =>
+                prevUsers.map((user) =>
+                    user.id === userId ? { ...user, isAdmin: !isAdmin } : user
+                )
+            );
+        } catch (error) {
+            console.error('Error toggling admin status:', error);
+        }
+    };
 
     return (
         <div>
@@ -30,8 +26,15 @@ const AdminPanel = () => {
             <ul>
                 {users.map((user) => (
                     <li key={user.uid}>
-                        {user.name}
-                        {user.isAdmin && <span style={{ color: 'green' }}> (Admin)</span>}
+                        {user.username} &nbsp;
+                        <label>
+                            User: isAdmin &nbsp;
+                            <input
+                                type="checkbox"
+                                checked={user.isAdmin}
+                                onChange={() => handleToggleAdmin(user.id, user.isAdmin)}
+                            />
+                        </label>
                     </li>
                 ))}
             </ul>

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     getAuth,
     createUserWithEmailAndPassword,
@@ -6,8 +6,8 @@ import {
     signInWithEmailAndPassword,
     onAuthStateChanged
 } from 'firebase/auth';
-import {firebaseConfig} from './firebase';
-import {getFirestore, doc, setDoc} from 'firebase/firestore';
+import { firebaseConfig } from './firebase';
+import { getFirestore, setDoc, doc } from 'firebase/firestore';
 import styles from '../styles/AuthForm.module.scss';
 
 const auth = getAuth(firebaseConfig);
@@ -16,14 +16,14 @@ const db = getFirestore();
 const SignUpComponent = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [username, setUsername] = useState(''); // New state for the username
+    const [username, setUsername] = useState('');
     const [successMessage, setSuccessMessage] = useState(false);
     const [verificationSent, setVerificationSent] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
 
     const handleSignUp = async () => {
         try {
-            const {user} = await createUserWithEmailAndPassword(auth, email, password);
+            const { user } = await createUserWithEmailAndPassword(auth, email, password);
             sendEmailVerification(auth.currentUser)
                 .then(() => {
                     setVerificationSent(true);
@@ -32,16 +32,16 @@ const SignUpComponent = () => {
                     console.log(error);
                 });
 
-            const userId = user.uid; // Get the user's ID after creating the user
+            const userId = user.uid;
 
-            // Create a new document in the "users" collection with the user's profile details
             await setDoc(doc(db, 'users', userId), {
                 username: username,
+                isAdmin: false,
                 email: email,
+                attendance: [{ course: '', date: '', status: '' }], // Add an object with empty values
             });
 
         } catch (error) {
-            // Handle error
             if (error.code === 'auth/email-already-in-use') {
                 setErrorMessage('User already exists. Please sign in instead.');
             } else {
@@ -49,6 +49,8 @@ const SignUpComponent = () => {
             }
         }
     };
+
+
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -62,7 +64,7 @@ const SignUpComponent = () => {
 
     const handleSignIn = async () => {
         try {
-            const {user} = await signInWithEmailAndPassword(auth, email, password);
+            const { user } = await signInWithEmailAndPassword(auth, email, password);
             if (user) {
                 if (user.emailVerified) {
                     // Redirect to desired page after successful sign-in
