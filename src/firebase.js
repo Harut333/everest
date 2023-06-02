@@ -1,6 +1,6 @@
-import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+import {initializeApp} from 'firebase/app';
+import {getAuth} from 'firebase/auth';
+import {getFirestore} from 'firebase/firestore';
 
 // Your Firebase configuration
 const firebaseConfig = {
@@ -23,4 +23,4 @@ export const auth = getAuth(app);
 export const db = getFirestore(app);
 
 // Export the Firebase app instance
-export default app;
+export default firebaseConfig;

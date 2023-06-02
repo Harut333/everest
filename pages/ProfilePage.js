@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { getFirestore, doc, getDoc } from 'firebase/firestore';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import React, {useState, useEffect} from 'react';
+import {getFirestore, doc, getDoc} from 'firebase/firestore';
+import {getAuth, onAuthStateChanged} from 'firebase/auth';
 import firebaseConfig from '../src/firebase';
 
 
@@ -80,7 +80,7 @@ const ProfilePage = () => {
                 </thead>
                 <tbody>
                 {/* Map over the user's attendance data and display each row */}
-                {userProfile.attendance.map((attendanceItem) => (
+                {userProfile.attendance && userProfile.attendance.map((attendanceItem) => (
                     <tr key={attendanceItem.date}>
                         <td>{attendanceItem.date}</td>
                         <td>{attendanceItem.course}</td>

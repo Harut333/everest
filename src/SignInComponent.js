@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { firebaseConfig } from '../src/firebase';
+import firebaseConfig from '../src/firebase';
+
 import styles from '../styles/AuthForm.module.scss';
 
 const auth = getAuth(firebaseConfig);
