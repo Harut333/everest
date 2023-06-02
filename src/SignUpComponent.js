@@ -6,7 +6,7 @@ import {
     signInWithEmailAndPassword,
     onAuthStateChanged
 } from 'firebase/auth';
-import { firebaseConfig } from './firebase';
+import firebaseConfig from '../src/firebase';
 import { getFirestore, setDoc, doc } from 'firebase/firestore';
 import styles from '../styles/AuthForm.module.scss';
 
@@ -36,9 +36,9 @@ const SignUpComponent = () => {
 
             await setDoc(doc(db, 'users', userId), {
                 username: username,
-                isAdmin: false,
+                isAdmin: false, // Add the "isAdmin" field with the value set to false
                 email: email,
-                attendance: [{ course: '', date: '', status: '' }], // Add an object with empty values
+                attendance: [], // Add the attendance array with an initial empty value
             });
 
         } catch (error) {
@@ -49,7 +49,6 @@ const SignUpComponent = () => {
             }
         }
     };
-
 
 
     useEffect(() => {

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { firebaseConfig } from '../src/firebase';
+import firebaseConfig from '../src/firebase';
+
 
 const db = getFirestore(firebaseConfig);
 const auth = getAuth(firebaseConfig);
