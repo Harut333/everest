@@ -12,7 +12,6 @@ const firebaseConfig = {
     appId: "1:466881771611:web:446e4b0ce1cdbd998d677e",
     measurementId: "G-ZEPLK02CP3"
 };
-
 // Initialize Firebase app
 const app = initializeApp(firebaseConfig);
 
@@ -23,4 +22,4 @@ export const auth = getAuth(app);
 export const db = getFirestore(app);
 
 // Export the Firebase app instance
-export default firebaseConfig;
+export default app;
